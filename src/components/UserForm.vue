@@ -43,7 +43,6 @@ export default {
 
   methods: {
     submitForm (input) {
-      console.log(input)
       this.$emit('submitForm', input)
     }
   }
