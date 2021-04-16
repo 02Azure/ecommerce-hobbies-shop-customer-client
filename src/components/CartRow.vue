@@ -1,10 +1,11 @@
 <template>
   <div class="cart-row">
     <h3>This is a user's cartrow component</h3>
-    {{ cart.ProductId }}
+    {{ item.name }}
+    {{ item.price }}
     <button @click="changeQuantity(1)">+</button>
     <!-- bind ke props quantity -->
-    {{ cart.quantity  }}
+    {{ item.Cart.quantity  }}
     <button @click="changeQuantity(-1)">-</button>
     <button>Delete</button>
   </div>
@@ -14,7 +15,7 @@
 export default {
   name: 'CartRow',
 
-  props: ['cart']
+  props: ['item']
 }
 </script>
 

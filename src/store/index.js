@@ -82,6 +82,41 @@ export default new Vuex.Store({
         })
     },
 
+    register (context, payload) {
+      axios({
+        method: 'POST',
+        url: '/register',
+        data: {
+          username: payload.username,
+          email: payload.email,
+          password: payload.password
+        }
+      })
+
+        .then(response => {
+          swalert.fire({
+            icon: 'info',
+            title: 'Registration complete! Now you can login with your brand new account!',
+          })
+        })
+
+        .catch(err => {
+          let msg
+
+          if (Array.isArray(err.response.data.error)) {
+            msg = err.response.data.error.join('\n')
+          } else {
+            msg = err.response.data.error
+          }
+
+          swalert.fire({
+            icon: 'error',
+            title: msg,
+            background: 'mistyrose'
+          })
+        })
+    },
+
     logout (context, payload) {
       context.commit('setLoggedIn', { status: false })
       context.commit('setUsername', { username: 'Guess' })

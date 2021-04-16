@@ -1,11 +1,11 @@
 <template>
   <div id="carts-page" class="page">
-    <h2>This is user cart's Page</h2>
+    <h2>This is a user cart's Page</h2>
 
     <CartRow
-      v-for = "cart in carts"
-      :key = "cart.id"
-      :cart = "cart"
+      v-for = "item in carts"
+      :key = "item.id"
+      :item = "item"
     />
 
     <button>Check out!</button>

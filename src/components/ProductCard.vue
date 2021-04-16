@@ -1,6 +1,6 @@
 <template>
   <div @click="toProductDetail(product.id)" class="product-card">
-    This is product card component
+    This is a product card component
     {{ product.id }} {{ product.name }}
   </div>
 </template>

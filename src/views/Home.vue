@@ -1,6 +1,6 @@
 <template>
   <div id='home-page' class='page'>
-    <h2>This is home's page</h2>
+    <h2>This is the home's page</h2>
     <ProductCard
       v-for = "product in products"
       :key = "product.id"
