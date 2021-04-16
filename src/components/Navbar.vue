@@ -6,13 +6,21 @@
     <router-link :to="{ name: 'Register' }">Register</router-link>
     <router-link :to="{ name: 'ProductDetail', params: { id: 1 } }">Product detail</router-link>
     <router-link :to="{ name: 'Carts' }">My Cart</router-link>
-    <button>Logout</button>
+    <button @click="logout">Logout</button>
   </header>
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
-  name: 'Navbar'
+  name: 'Navbar',
+
+  methods: {
+    ...mapActions([
+      'logout'
+    ])
+  }
 }
 </script>
 

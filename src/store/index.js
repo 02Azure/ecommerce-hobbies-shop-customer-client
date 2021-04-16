@@ -58,9 +58,11 @@ export default new Vuex.Store({
             swalert.fire({
               icon: 'success',
               iconColor: 'deepskyblue',
-              title: `Welcome, ${response.data.name}!`,
+              title: `Welcome, ${response.data.username}!`,
               background: 'azure'
             })
+
+            router.push({ name: 'Home' })
           } else {
             const err = {
               response: {
@@ -96,8 +98,10 @@ export default new Vuex.Store({
         .then(response => {
           swalert.fire({
             icon: 'info',
-            title: 'Registration complete! Now you can login with your brand new account!',
+            title: 'Registration complete! Now you can login with your brand new account!'
           })
+
+          router.push({ name: 'Login' })
         })
 
         .catch(err => {
@@ -122,6 +126,10 @@ export default new Vuex.Store({
       context.commit('setUsername', { username: 'Guess' })
 
       localStorage.clear()
+      swalert.fire({
+        icon: 'info',
+        title: 'Successfully logged out'
+      })
       router.push({ name: 'Home' })
     },
 
