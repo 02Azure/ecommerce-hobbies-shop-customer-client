@@ -4,7 +4,7 @@
     <div class="image-container">
       <img src="https://i.imgur.com/qjIemZX.png" alt="immunity lily">
     </div>
-    <p>The link you are navigated to is not found on this site</p>
+    <p class="error-msg">Lily protected you from getting lost. The link you are navigated to is not found on this site</p>
   </div>
 </template>
 
@@ -15,6 +15,10 @@ export default {
 </script>
 
 <style scoped>
+  #not-found-page {
+    background-color: rgba(240, 255, 255, 0.7);
+  }
+
   h2{
     font-size: 2.5em;
     font-weight: bolder;
@@ -25,5 +29,9 @@ export default {
     margin:2em auto;
     text-align:center;
     max-height:250px;
+  }
+
+  .error-msg {
+    font-size:1.5em;
   }
 </style>

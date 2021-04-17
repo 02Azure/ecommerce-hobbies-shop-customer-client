@@ -180,6 +180,7 @@ export default new Vuex.Store({
         })
 
         .catch(err => {
+          router.push({ name: 'NotFound' })
           swalert.fire({
             icon: 'error',
             title: err.response.data.error,
@@ -353,6 +354,7 @@ export default new Vuex.Store({
         })
 
         .catch(err => {
+          router.push({ name: 'NotFound' })
           swalert.fire({
             icon: 'error',
             title: err.response.data.error,
