@@ -382,11 +382,29 @@ export default new Vuex.Store({
         })
 
         .catch(err => {
-          swalert.fire({
-            icon: 'error',
-            title: err.response.data.error,
-            background: 'mistyrose'
-          })
+          let msg
+
+          if (Array.isArray(err.response.data.error)) {
+            msg = err.response.data.error.slice(1).join('<br>')
+
+            swalert.fire({
+              icon: 'error',
+              toast: false,
+              timer: undefined,
+              showConfirmButton: true,
+              title: err.response.data.error[0],
+              position: 'center',
+              html: msg
+            })
+          } else {
+            msg = err.response.data.error
+
+            swalert.fire({
+              icon: 'error',
+              title: msg,
+              background: 'mistyrose'
+            })
+          }
         })
     }
   }
