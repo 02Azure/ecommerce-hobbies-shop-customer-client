@@ -7,9 +7,10 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <div class="navbar-nav me-auto mb-2 mb-lg-0">
+          <div class=".navbar-nav-scroll navbar-nav me-auto mb-2 mb-lg-0">
             <router-link :to="{ name: 'Home' }" class="nav-link" aria-current="page"><i class="fa fa-home"></i></router-link>
             <router-link v-if="isLoggedIn" :to="{ name: 'Carts' }" class="nav-link"><i class="fa fa-shopping-cart"></i></router-link>
+            <router-link v-if="isLoggedIn" :to="{ name: 'Transactions' }" class="nav-link"><i class="fa fa-history"></i></router-link>
           </div>
           <div class="navbar-nav mb-2 mb-lg-0">
             <span id="loggedInUser">{{ username }}</span>

@@ -4,7 +4,8 @@
       <img class="image-container offset-1 col-10 offset-md-1 col-md-3 offset-lg-1 col-lg-4" :src="product.image_url" onerror="this.src = 'https://www.arraymedical.com/wp-content/uploads/2018/12/product-image-placeholder.jpg'" alt="product's image">
       <div class="detail-container offset-1 col-10 offset-md-1 col-md-6 offset-lg-1 col-lg-5">
         <h2>{{ product.name }}</h2>
-        <p>Stock: {{ product.stock }}</p>
+        <p v-if="product.stock">Stock: {{ product.stock }}</p>
+        <p class="stockout" v-else>Out of Stock</p>
         <p>Price: Rp. {{ product.price }}</p>
         <p>Category: {{ product.category }}</p>
         <p class="product-detail">{{ product.detail }}</p>
@@ -78,5 +79,10 @@ export default {
   button{
     margin: 30px 10px;
     width: 40%
+  }
+
+  .stockout {
+    color:red;
+    font-weight:bold
   }
 </style>
