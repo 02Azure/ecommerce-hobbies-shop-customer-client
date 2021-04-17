@@ -375,7 +375,7 @@ export default new Vuex.Store({
         .then(response => {
           swalert.fire({
             icon: 'success',
-            title: 'Thanks you, your purchase will be processed ASAP!'
+            title: 'Thank you, your purchase will be processed ASAP!'
           })
 
           context.commit('setCarts', { carts: [] })
