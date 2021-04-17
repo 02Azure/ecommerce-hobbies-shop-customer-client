@@ -1,6 +1,6 @@
 <template>
   <div id="login-page" class="page row">
-    <div class="form-container offset-1 col-10 md-offset-1 col-md-4">
+    <div class="form-container offset-1 col-10 sm-offset-1 col-sm-6 md-offset-1 col-md-5">
       <h2>Login</h2>
       <UserForm
         :formAction = "'login'"
@@ -29,5 +29,7 @@ export default {
 </script>
 
 <style>
-
+  #login-page {
+    margin-top: 90px;
+  }
 </style>

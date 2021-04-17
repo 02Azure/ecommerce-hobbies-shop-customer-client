@@ -49,6 +49,14 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+  .form-group {
+    margin-top: 1.5em;
+  }
 
+  button {
+    margin-top: 2em;
+    margin-bottom: 1em;
+    width: 100%
+  }
 </style>

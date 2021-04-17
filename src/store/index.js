@@ -217,6 +217,7 @@ export default new Vuex.Store({
         .then(response => {
           swalert.fire({
             icon: 'success',
+            width: 350,
             title: `${payload.name} has been successfully added to your cart!`
           })
         })
@@ -246,7 +247,7 @@ export default new Vuex.Store({
         .then(response => {
           swalert.fire({
             icon: 'success',
-            title: "Item's quantity has been successfully updated!"
+            title: "Your cart Item's quantity has been successfully saved!"
           })
         })
 
@@ -288,6 +289,7 @@ export default new Vuex.Store({
                 context.dispatch('getUserCarts')
                 swalert.fire({
                   icon: 'success',
+                  width: 350,
                   title: 'Item has been successfully removed from your cart!'
                 })
               })
