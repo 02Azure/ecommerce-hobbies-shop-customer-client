@@ -1,8 +1,8 @@
 <template>
   <div id="product-detail-page" class="page">
-    <div class="row">
-      <img class="image-container offset-1 col-10 offset-lg-1 col-lg-4" :src="product.image_url" onerror="this.src = 'https://www.arraymedical.com/wp-content/uploads/2018/12/product-image-placeholder.jpg'" alt="product's image">
-      <div class="detail-container offset-1 col-10 offset-lg-1 col-lg-5">
+    <div class="detail-container row">
+      <img class="image-container offset-1 col-10 offset-md-1 col-md-3 offset-lg-1 col-lg-4" :src="product.image_url" onerror="this.src = 'https://www.arraymedical.com/wp-content/uploads/2018/12/product-image-placeholder.jpg'" alt="product's image">
+      <div class="detail-container offset-1 col-10 offset-md-1 col-md-6 offset-lg-1 col-lg-5">
         <h2>{{ product.name }}</h2>
         <p>Stock: {{ product.stock }}</p>
         <p>Price: Rp. {{ product.price }}</p>
@@ -61,6 +61,11 @@ export default {
 </script>
 
 <style scoped>
+  .detail-container{
+    padding:1em 0;
+    background-color:rgba(255, 255, 255, 0.7);
+  }
+
   img {
     object-fit: contain;
     max-height: 300px;

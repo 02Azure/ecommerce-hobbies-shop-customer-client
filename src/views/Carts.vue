@@ -23,7 +23,7 @@
     </table>
     <div v-if="total">
       <p id="total-price">Total: {{ total }}</p>
-      <button>Check out!</button>
+      <button class="btn btn-success">Check out!</button>
     </div>
 
     <p v-else>You don't have anything in your cart yet...</p>
@@ -56,7 +56,13 @@ export default {
 </script>
 
 <style scoped>
+  #carts-page {
+    background-color: rgba(255, 255, 255, 0.75);
+    margin-bottom: 2em;
+    padding: 1em 0.5em;
+  }
   #total-price {
+    margin-right: 0.8em;
     font-weight: bolder;
     text-align: right;
     font-size:1em;

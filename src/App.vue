@@ -23,6 +23,17 @@ export default {
 </script>
 
 <style>
+html {
+  background-image: url('https://i.imgur.com/iX1MCAG.png');
+  background-repeat:no-repeat;
+  background-size:cover;
+  background-attachment:fixed;
+}
+
+body{
+  background-color: transparent !important;
+}
+
 #app {
   text-align: center;
 }

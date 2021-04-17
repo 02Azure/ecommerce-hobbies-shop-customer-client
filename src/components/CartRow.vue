@@ -3,7 +3,7 @@
       <th class="align-middle" scope="row">{{ number }}</th>
       <td class="align-middle"><router-link :to="{ name: 'ProductDetail', params: { id: item.id } }">{{ item.name }}</router-link></td>
       <td class="align-middle">
-        <router-link :to="{ name: 'ProductDetail', params: { id: item.id } }">
+        <router-link class="product-name-cart" :to="{ name: 'ProductDetail', params: { id: item.id } }">
           <img
             :src="item.image_url"
             onerror="this.src = 'https://www.arraymedical.com/wp-content/uploads/2018/12/product-image-placeholder.jpg'"
@@ -79,5 +79,9 @@ tr:hover td input{
   position:absolute;
   top:2%;
   right:5%;
+}
+
+a {
+  font-weight: bold;
 }
 </style>

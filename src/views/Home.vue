@@ -1,6 +1,6 @@
 <template>
   <div id='home-page' class='page'>
-    <h2>Show Case</h2>
+    <h2 class="home-title">Show Case</h2>
     <div class="product-container">
       <ProductCard
         v-for = "product in products"
@@ -32,7 +32,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
   .product-container{
     padding: 2em;
     display: grid;
@@ -42,6 +42,12 @@ export default {
 
   .product-card:hover {
     outline: solid blue 2px;
+  }
+
+  .home-title {
+    background-color:rgba(255, 255, 255, 0.6);
+    font-size: 2.6em;
+    font-weight:bolder;
   }
 
 </style>
