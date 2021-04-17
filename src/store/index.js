@@ -13,6 +13,8 @@ export default new Vuex.Store({
     carts: [],
     products: [],
     product: {},
+    transactions: [],
+    transaction: {},
     cartQuantities: {}
   },
 
@@ -39,6 +41,14 @@ export default new Vuex.Store({
 
     setProduct (state, payload) {
       state.product = payload.product
+    },
+
+    setTransactions (state, payload) {
+      state.transactions = payload.transactions
+    },
+
+    setTransaction (state, payload) {
+      state.transaction = payload.transaction
     }
   },
   actions: {
@@ -302,6 +312,79 @@ export default new Vuex.Store({
                 })
               })
           }
+        })
+    },
+
+    getUserTransactions (context, payload) {
+      axios({
+        method: 'GET',
+        url: '/transactions',
+        headers: {
+          access_token: localStorage.access_token
+        }
+      })
+
+        .then(response => {
+          context.commit('setTransactions', { transactions: response.data })
+        })
+
+        .catch(err => {
+          swalert.fire({
+            icon: 'error',
+            title: err.response.data.error,
+            background: 'mistyrose'
+          })
+        })
+    },
+
+    getOneTransaction (context, payload) {
+      const transactionId = router.currentRoute.params.id
+
+      axios({
+        method: 'GET',
+        url: `/transactions/${transactionId}`,
+        headers: {
+          access_token: localStorage.access_token
+        }
+      })
+
+        .then(response => {
+          context.commit('setTransaction', { transaction: response.data })
+        })
+
+        .catch(err => {
+          swalert.fire({
+            icon: 'error',
+            title: err.response.data.error,
+            background: 'mistyrose'
+          })
+        })
+    },
+
+    purchaseItems (context, payload) {
+      axios({
+        method: 'POST',
+        url: '/transactions',
+        headers: {
+          access_token: localStorage.access_token
+        }
+      })
+
+        .then(response => {
+          swalert.fire({
+            icon: 'success',
+            title: 'Thanks you, your purchase will be processed ASAP!'
+          })
+
+          context.commit('setCarts', { carts: [] })
+        })
+
+        .catch(err => {
+          swalert.fire({
+            icon: 'error',
+            title: err.response.data.error,
+            background: 'mistyrose'
+          })
         })
     }
   }

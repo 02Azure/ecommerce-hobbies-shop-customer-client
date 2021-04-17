@@ -5,6 +5,8 @@ import Login from '../views/Login.vue'
 import Register from '../views/Register.vue'
 import ProductDetail from '../views/ProductDetail.vue'
 import Carts from '../views/Carts.vue'
+import Transactions from '../views/Transactions.vue'
+import TransactionDetail from '../views/TransactionDetail.vue'
 import NotFound from '../views/NotFound.vue'
 
 Vue.use(VueRouter)
@@ -26,6 +28,10 @@ const routes = [
     component: Register
   },
   {
+    path: '/products',
+    redirect: { name: 'Home' }
+  },
+  {
     path: '/products/:id', // redirect ke home jika tanpa :id
     name: 'ProductDetail',
     component: ProductDetail
@@ -34,6 +40,16 @@ const routes = [
     path: '/carts',
     name: 'Carts',
     component: Carts
+  },
+  {
+    path: '/transactions',
+    name: 'Transactions',
+    component: Transactions
+  },
+  {
+    path: '/transactions/:id',
+    name: 'TransactionDetail',
+    component: TransactionDetail
   },
   {
     path: '*',

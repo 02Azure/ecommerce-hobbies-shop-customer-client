@@ -1,6 +1,7 @@
 <template>
-  <div id="carts-page" class="page">
-    <h2>My Cart</h2>
+  <div id="transaction-detail-page" class="page">
+    <h2>Transaction ID {{ id }} Log</h2>
+    <p>Please note that these are the purchased product data at purchase time</p>
     <table class="table table-hover">
       <thead>
         <tr>
@@ -13,67 +14,60 @@
       </thead>
 
       <tbody>
-        <CartRow
-          v-for = "(item, i) in carts"
+        <OldCartRow
+          v-for = "(item, i) in purchasedItems"
           :key = "item.id"
           :item = "item"
           :number = i+1
         />
       </tbody>
     </table>
-    <div v-if="total">
-      <p id="total-price">Total: {{ total }}</p>
-      <button @click="purchaseItems()" class="btn btn-primary">Check out!</button>
-    </div>
-
-    <p v-else>You don't have anything in your cart yet...</p>
-
+    <p id="total-price">Total: {{ total }}</p>
   </div>
 </template>
 
 <script>
-import { mapActions } from 'vuex'
-import CartRow from '../components/CartRow'
+import OldCartRow from '../components/OldCartRow'
 
 export default {
-  name: 'Carts',
+  name: 'TransactionDetail',
 
-  components: { CartRow },
+  components: { OldCartRow },
 
   created () {
-    this.$store.dispatch('getUserCarts')
+    this.$store.dispatch('getOneTransaction')
   },
 
   computed: {
-    carts () {
-      return this.$store.state.carts
+    purchasedItems () {
+      return this.$store.state.transaction.PurchasedItems
     },
 
     total () {
-      return this.$store.state.carts.reduce((total, item) => total + (item.price * item.Cart.quantity), 0)
-    }
-  },
+      return this.$store.state.transaction.PurchasedItems.reduce((total, item) => total + (item.price * item.quantity), 0)
+    },
 
-  methods: {
-    ...mapActions([
-      'purchaseItems'
-    ])
+    id () {
+      return this.$route.params.id
+    }
   }
 }
 </script>
 
 <style scoped>
-  #carts-page {
+  #transaction-detail-page {
     background-color: rgba(255, 255, 255, 0.75);
     margin-bottom: 2em;
     padding: 1em 0.5em;
   }
+
   #total-price {
     margin-right: 0.8em;
     font-weight: bolder;
     text-align: right;
     font-size:1em;
   }
+
   .page {
     padding: 0 2em;
   }
