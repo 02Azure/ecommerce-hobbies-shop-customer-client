@@ -12,7 +12,8 @@ export default new Vuex.Store({
     username: 'Guess',
     carts: [],
     products: [],
-    product: {}
+    product: {},
+    cartQuantities: {}
   },
 
   mutations: {
@@ -26,6 +27,10 @@ export default new Vuex.Store({
 
     setCarts (state, payload) {
       state.carts = payload.carts
+    },
+
+    changeQuantity (state, payload) {
+      state.carts[payload.index].Cart.quantity += payload.increment
     },
 
     setProducts (state, payload) {
@@ -196,22 +201,23 @@ export default new Vuex.Store({
     },
 
     addUserCarts (context, payload) {
+      console.log(payload)
       axios({
         method: 'POST',
         url: '/carts',
         headers: {
           access_token: localStorage.access_token
         },
-        body: {
-          quantity: payload.quantity,
-          ProductId: payload.ProductId
+        data: {
+          ProductId: payload.ProductId,
+          quantity: payload.quantity
         }
       })
 
         .then(response => {
           swalert.fire({
             icon: 'success',
-            title: 'Item has been successfully added to your cart!'
+            title: `${payload.name} has been successfully added to your cart!`
           })
         })
 
@@ -231,9 +237,9 @@ export default new Vuex.Store({
         headers: {
           access_token: localStorage.access_token
         },
-        body: {
-          quantity: payload.quantity,
-          ProductId: payload.ProductId
+        data: {
+          quantity: +payload.quantity,
+          ProductId: +payload.ProductId
         }
       })
 
@@ -262,7 +268,8 @@ export default new Vuex.Store({
         showConfirmButton: true,
         showCancelButton: true,
         cancelButtonColor: 'red',
-        confirmButtonText: 'Yes'
+        confirmButtonText: 'Yes',
+        timer: undefined
       })
         .then(result => {
           if (result.isConfirmed) {
@@ -272,12 +279,13 @@ export default new Vuex.Store({
               headers: {
                 access_token: localStorage.access_token
               },
-              body: {
+              data: {
                 ProductId: payload.ProductId
               }
             })
 
               .then(response => {
+                context.dispatch('getUserCarts')
                 swalert.fire({
                   icon: 'success',
                   title: 'Item has been successfully removed from your cart!'

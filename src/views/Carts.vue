@@ -3,9 +3,10 @@
     <h2>This is a user cart's Page</h2>
 
     <CartRow
-      v-for = "item in carts"
+      v-for = "(item, i) in carts"
       :key = "item.id"
       :item = "item"
+      :index = i
     />
 
     <button>Check out!</button>
